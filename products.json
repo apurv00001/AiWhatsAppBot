@@ -1,0 +1,119 @@
+{
+  "products": [
+    {
+      "id": "PROD001",
+      "name": "Premium Cotton T-Shirt",
+      "description": "High-quality 100% cotton t-shirt, comfortable and durable",
+      "price": 29.99,
+      "currency": "USD",
+      "category": "Clothing",
+      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["White", "Black", "Navy", "Gray"],
+      "in_stock": true,
+      "keywords": ["tshirt", "t-shirt", "shirt", "cotton", "casual"]
+    },
+    {
+      "id": "PROD002",
+      "name": "Classic Denim Jeans",
+      "description": "Stylish and comfortable denim jeans with modern fit",
+      "price": 59.99,
+      "currency": "USD",
+      "category": "Clothing",
+      "sizes": ["28", "30", "32", "34", "36"],
+      "colors": ["Blue", "Black"],
+      "in_stock": true,
+      "keywords": ["jeans", "denim", "pants", "casual"]
+    },
+    {
+      "id": "PROD003",
+      "name": "Leather Wallet",
+      "description": "Genuine leather wallet with multiple card slots and bill compartment",
+      "price": 39.99,
+      "currency": "USD",
+      "category": "Accessories",
+      "colors": ["Brown", "Black"],
+      "in_stock": true,
+      "keywords": ["wallet", "leather", "accessory", "money"]
+    },
+    {
+      "id": "PROD004",
+      "name": "Wireless Bluetooth Headphones",
+      "description": "Premium sound quality with noise cancellation, 30-hour battery life",
+      "price": 89.99,
+      "currency": "USD",
+      "category": "Electronics",
+      "colors": ["Black", "White"],
+      "in_stock": true,
+      "keywords": ["headphones", "bluetooth", "wireless", "audio", "music"]
+    },
+    {
+      "id": "PROD005",
+      "name": "Stainless Steel Water Bottle",
+      "description": "Insulated water bottle keeps drinks cold for 24 hours, hot for 12 hours",
+      "price": 24.99,
+      "currency": "USD",
+      "category": "Home & Kitchen",
+      "sizes": ["500ml", "750ml", "1L"],
+      "colors": ["Silver", "Black", "Blue", "Red"],
+      "in_stock": true,
+      "keywords": ["bottle", "water", "insulated", "drink", "thermos"]
+    },
+    {
+      "id": "PROD006",
+      "name": "Yoga Mat Premium",
+      "description": "Non-slip yoga mat with extra cushioning, includes carrying strap",
+      "price": 34.99,
+      "currency": "USD",
+      "category": "Sports & Fitness",
+      "colors": ["Purple", "Blue", "Pink", "Black"],
+      "in_stock": true,
+      "keywords": ["yoga", "mat", "exercise", "fitness", "workout"]
+    },
+    {
+      "id": "PROD007",
+      "name": "Coffee Maker Pro",
+      "description": "Programmable coffee maker with thermal carafe, 12-cup capacity",
+      "price": 79.99,
+      "currency": "USD",
+      "category": "Home & Kitchen",
+      "colors": ["Stainless Steel"],
+      "in_stock": true,
+      "keywords": ["coffee", "maker", "machine", "brew", "kitchen"]
+    },
+    {
+      "id": "PROD008",
+      "name": "Running Shoes Elite",
+      "description": "Lightweight running shoes with advanced cushioning technology",
+      "price": 119.99,
+      "currency": "USD",
+      "category": "Sports & Fitness",
+      "sizes": ["7", "8", "9", "10", "11", "12"],
+      "colors": ["Black", "White", "Blue", "Red"],
+      "in_stock": true,
+      "keywords": ["shoes", "running", "sneakers", "athletic", "sports"]
+    },
+    {
+      "id": "PROD009",
+      "name": "Smartphone Case Premium",
+      "description": "Shockproof case with raised edges for screen protection",
+      "price": 19.99,
+      "currency": "USD",
+      "category": "Electronics",
+      "colors": ["Clear", "Black", "Blue", "Red"],
+      "models": ["iPhone 14", "iPhone 15", "Samsung Galaxy S23", "Samsung Galaxy S24"],
+      "in_stock": true,
+      "keywords": ["case", "phone", "cover", "protection", "smartphone"]
+    },
+    {
+      "id": "PROD010",
+      "name": "Desk Lamp LED",
+      "description": "Adjustable LED desk lamp with USB charging port and touch controls",
+      "price": 44.99,
+      "currency": "USD",
+      "category": "Home & Office",
+      "colors": ["White", "Black", "Silver"],
+      "in_stock": true,
+      "keywords": ["lamp", "desk", "led", "light", "office"]
+    }
+  ]
+}

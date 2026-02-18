@@ -1,5 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { initWhatsApp } from './whatsapp.js';
 import { testOllamaConnection } from './ai.js';
 import leadsRouter from './routes/leads.js';
@@ -7,6 +9,9 @@ import messagesRouter from './routes/messages.js';
 import ordersRouter from './routes/orders.js';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Main server for WhatsApp Sales Auto-Closer
@@ -19,6 +24,9 @@ const PORT = process.env.PORT || 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Serve dashboard static files
+app.use('/dashboard', express.static(path.join(__dirname, 'dashboard')));
 
 // CORS middleware for API access
 app.use((req, res, next) => {
@@ -54,12 +62,23 @@ app.use('/api/leads', leadsRouter);
 app.use('/api/messages', messagesRouter);
 app.use('/api/orders', ordersRouter);
 
-// Root endpoint
+// Root endpoint - redirect to dashboard
 app.get('/', (req, res) => {
+  res.redirect('/dashboard/');
+});
+
+// Dashboard redirect
+app.get('/dashboard', (req, res) => {
+  res.redirect('/dashboard/');
+});
+
+// API info endpoint
+app.get('/api/info', (req, res) => {
   res.json({
     success: true,
     message: 'WhatsApp Sales Auto-Closer API',
     version: '1.0.0',
+    dashboard: 'http://localhost:3000/dashboard/',
     endpoints: {
       health: 'GET /health',
       leads: {
@@ -132,6 +151,7 @@ async function startServer() {
     // Start Express server
     app.listen(PORT, () => {
       console.log(`\n✅ Express server running on port ${PORT}`);
+      console.log(`📊 Dashboard: http://localhost:${PORT}/dashboard`);
       console.log(`📡 API endpoint: http://localhost:${PORT}`);
       console.log(`🏥 Health check: http://localhost:${PORT}/health\n`);
     });

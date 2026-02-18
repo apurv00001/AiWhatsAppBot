@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Sales Dashboard</title>
+  <link rel="stylesheet" href="/dashboard/styles.css">
+</head>
+<body>
+  <div id="app">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">💬</div>
+          <div class="logo-text">
+            <div class="logo-title">Sales AI</div>
+            <div class="logo-subtitle">WhatsApp Auto-Closer</div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="#" data-section="dashboard" class="nav-item active">
+          <span class="icon">📊</span>
+          <span class="label">Dashboard</span>
+        </a>
+        <a href="#" data-section="leads" class="nav-item">
+          <span class="icon">👥</span>
+          <span class="label">Leads</span>
+        </a>
+        <a href="#" data-section="messages" class="nav-item">
+          <span class="icon">💬</span>
+          <span class="label">Messages</span>
+        </a>
+        <a href="#" data-section="orders" class="nav-item">
+          <span class="icon">📦</span>
+          <span class="label">Orders</span>
+        </a>
+        <a href="#" data-section="settings" class="nav-item">
+          <span class="icon">⚙️</span>
+          <span class="label">Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="status-indicator" id="status-indicator">
+          <span class="status-dot"></span>
+          <span class="status-text">Connected</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-bar">
+        <div class="search-bar">
+          <input type="text" placeholder="Search leads, messages..." class="search-input">
+        </div>
+        <div class="header-actions">
+          <button class="btn-icon">🔔</button>
+          <button class="btn-icon">👤</button>
+        </div>
+      </header>
+
+      <div class="content-area">
+        <section id="dashboard-section" class="section active">
+          <div class="section-header">
+            <h1>Dashboard</h1>
+            <div class="header-controls">
+              <select id="date-filter" class="select-control">
+                <option value="today">Today</option>
+                <option value="week" selected>This Week</option>
+                <option value="month">This Month</option>
+                <option value="all">All Time</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Total Leads</span>
+                <span class="stat-icon">👥</span>
+              </div>
+              <div class="stat-value" id="stat-total-leads">0</div>
+              <div class="stat-detail">Active conversations</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Converted</span>
+                <span class="stat-icon">✅</span>
+              </div>
+              <div class="stat-value" id="stat-converted">0</div>
+              <div class="stat-detail">This week</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Needs Human</span>
+                <span class="stat-icon">🙋</span>
+              </div>
+              <div class="stat-value" id="stat-needs-human">0</div>
+              <div class="stat-detail">Awaiting agent</div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-header">
+                <span class="stat-label">Total Orders</span>
+                <span class="stat-icon">📦</span>
+              </div>
+              <div class="stat-value" id="stat-total-orders">0</div>
+              <div class="stat-detail">Revenue generated</div>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <div class="card">
+              <div class="card-header">
+                <h2>Recent Leads</h2>
+                <a href="#" class="link-view-all">View all →</a>
+              </div>
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>City</th>
+                      <th>Status</th>
+                      <th>Last Contact</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-leads">
+                    <tr>
+                      <td colspan="4" class="table-empty">Loading leads...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="card">
+              <div class="card-header">
+                <h2>Recent Orders</h2>
+                <a href="#" class="link-view-all">View all →</a>
+              </div>
+              <div class="table-container">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Order ID</th>
+                      <th>Customer</th>
+                      <th>Status</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody id="recent-orders">
+                    <tr>
+                      <td colspan="4" class="table-empty">Loading orders...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="leads-section" class="section">
+          <div class="section-header">
+            <h1>Leads Management</h1>
+            <button class="btn btn-primary" id="btn-add-lead">+ Add Lead</button>
+          </div>
+
+          <div class="filters-bar">
+            <select id="leads-status-filter" class="select-control">
+              <option value="">All Status</option>
+              <option value="new">New</option>
+              <option value="engaged">Engaged</option>
+              <option value="converted">Converted</option>
+            </select>
+            <input type="text" placeholder="Search leads..." class="search-input" id="leads-search">
+          </div>
+
+          <div class="card">
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>City</th>
+                    <th>Status</th>
+                    <th>Needs Human</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="leads-table">
+                  <tr>
+                    <td colspan="6" class="table-empty">Loading leads...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="messages-section" class="section">
+          <div class="section-header">
+            <h1>Messages</h1>
+            <button class="btn btn-primary" id="btn-broadcast">📢 Broadcast</button>
+          </div>
+
+          <div class="filters-bar">
+            <input type="text" placeholder="Search by phone number..." class="search-input" id="messages-search">
+          </div>
+
+          <div class="card">
+            <div id="messages-list" class="messages-list">
+              <div class="empty-state">
+                <span class="empty-icon">💬</span>
+                <p>Select a conversation to view messages</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="orders-section" class="section">
+          <div class="section-header">
+            <h1>Orders</h1>
+          </div>
+
+          <div class="filters-bar">
+            <select id="orders-status-filter" class="select-control">
+              <option value="">All Status</option>
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+              <option value="failed">Failed</option>
+            </select>
+          </div>
+
+          <div class="card">
+            <div class="table-container">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Phone</th>
+                    <th>Product</th>
+                    <th>Status</th>
+                    <th>Total</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+                <tbody id="orders-table">
+                  <tr>
+                    <td colspan="6" class="table-empty">Loading orders...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="settings-section" class="section">
+          <div class="section-header">
+            <h1>Settings</h1>
+          </div>
+
+          <div class="card">
+            <div class="settings-group">
+              <h3>API Configuration</h3>
+              <div class="setting-item">
+                <label>API Endpoint</label>
+                <input type="text" id="setting-api-endpoint" class="input" placeholder="http://localhost:3000" value="">
+                <p class="help-text">Base URL for API requests</p>
+              </div>
+              <button class="btn btn-secondary" id="btn-test-api">Test Connection</button>
+            </div>
+
+            <div class="settings-group">
+              <h3>Auto-Refresh</h3>
+              <div class="setting-item">
+                <label>Refresh Interval (seconds)</label>
+                <input type="number" id="setting-refresh-interval" class="input" value="30" min="5">
+              </div>
+            </div>
+
+            <button class="btn btn-primary" id="btn-save-settings">Save Settings</button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="/dashboard/app.js"></script>
+</body>
+</html>

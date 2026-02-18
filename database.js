@@ -348,11 +348,11 @@ export async function getStatistics() {
     if (ordersError) throw ordersError;
 
     return {
-      totalLeads: totalLeads || 0,
-      convertedLeads: convertedLeads || 0,
-      needsHumanAgent: needsAgent || 0,
-      totalOrders: totalOrders || 0,
-      conversionRate: totalLeads > 0 ? ((convertedLeads / totalLeads) * 100).toFixed(2) : 0
+      total_leads: totalLeads || 0,
+      converted_count: convertedLeads || 0,
+      needs_human_agent: needsAgent || 0,
+      total_orders: totalOrders || 0,
+      conversion_rate: totalLeads > 0 ? ((convertedLeads / totalLeads) * 100).toFixed(2) : 0
     };
   } catch (error) {
     console.error('Error in getStatistics:', error);
